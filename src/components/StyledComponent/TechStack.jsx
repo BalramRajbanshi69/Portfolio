@@ -1,27 +1,27 @@
 import React from 'react';
 import styled from 'styled-components';
 // Frontend imports
-import HTML from '../../assets/tech/html-5.png';
+import HTML from '../../assets/tech/html.png';
 import CSS from '../../assets/tech/css.png';
 import JavaScript from '../../assets/tech/js.png';
 import ReactLogo from '../../assets/tech/reactjs.png';
 import Tailwind from '../../assets/tech/tailwind.png';
-import Bootstrap from '../../assets/tech/Bootstrap.png';
+import Bootstrap from '../../assets/tech/bootstrap.png';
 // Backend imports
 import Node from '../../assets/tech/nodejs.png';
 import Express from '../../assets/tech/expressjs.png';
-import MongoDB from '../../assets/tech/mongoDB.png';
+import MongoDB from "../../assets/tech/mongodb.png";
 import Mongoose from '../../assets/tech/mongoosejs.png';
 import RestAPI from '../../assets/tech/restapi.png';
 // Tools imports
 import VSCode from '../../assets/tech/vscode.png';
-import Git from '../../assets/tech/Git.png';
-import GitHub from '../../assets/tech/GitHub.png';
-import Postman from '../../assets/tech/Postman.png';
+import Git from '../../assets/tech/git.png';
+import GitHub from '../../assets/tech/github.png';
+import Postman from '../../assets/tech/postman.png';
 import Thunder from '../../assets/tech/thunderclient.jpeg';
-import NPM from '../../assets/tech/NPM.png';
+import NPM from '../../assets/tech/npm.png';
 import Nodemon from '../../assets/tech/nodemon.png';
-import Vercel from '../../assets/tech/Vercel.png';
+import Vercel from '../../assets/tech/vercel.png';
 
 const TechStack = () => {
   const techStacks = {

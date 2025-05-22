@@ -10,7 +10,7 @@ import Bootstrap from '../../assets/tech/bootstrap.png';
 // Backend imports
 import Node from '../../assets/tech/nodejs.png';
 import Express from '../../assets/tech/expressjs.png';
-import MongoDB from "../../assets/tech/mongodb.png";
+import MongoDB from "../../../src/assets/tech/mongodb.png";
 import Mongoose from '../../assets/tech/mongoosejs.png';
 import RestAPI from '../../assets/tech/restapi.png';
 // Tools imports

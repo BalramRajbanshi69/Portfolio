@@ -1,0 +1,117 @@
+.light-button div.bt {
+    position: relative;
+    height: 100px;
+    display: flex;
+    align-items: flex-end;
+    outline: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+
+  .light-button div.bt .button-holder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100px;
+     width: 100px;
+     color: white;
+     text-align:center;
+    font-weight: 700;
+     
+  }
+
+  .light-button div.bt .light-holder {
+    position: absolute;
+     height: 90px;
+    width: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+
+.light-button .bulb-icon {
+  position: absolute;
+  top: 0;
+  font-size: 1.2rem;
+  color: transparent;
+  /* color: rgba(101, 101, 121, 1); */
+  transition: all 0.3s ease;
+  transform:rotate(180deg)
+}
+
+.light-button:hover .bulb-icon {
+  color: rgb(255, 255, 255);
+  z-index:10;
+}
+
+
+  .light-button div.bt .light-holder .light {
+    position: absolute;
+    top: 0;
+    width: 300px;
+    height: 95px;
+    clip-path: polygon(50% 0%, 25% 100%, 75% 100%);
+    background: transparent;
+  }
+
+  .light-button div.bt:hover .button-holder .svg {
+    fill: rgba(101, 101, 121, 1);
+  }
+
+  .light-button div.bt .button-holder {
+    color: rgba(101, 101, 121, 1);
+  }
+
+  .light-button div.bt:hover .light-holder .light {
+     background: rgb(255, 255, 255); 
+     background: linear-gradient(
+      180deg,
+      rgba(101, 101, 121, 1) 0%,
+      rgba(255, 255, 255, 0) 75%,
+      rgba(255, 255, 255, 0) 100%
+    )  
+  }
+
+   
+
+  
+.active-link .bulb-icon  {
+  color: rgb(255, 255, 255) !important;
+  opacity: 1;
+  z-index: 10;
+}
+
+
+.active-link .button-holder p {
+  color: rgb(255, 255, 255) !important;
+  opacity: 1;
+  z-index: 10;
+}
+
+.active-link .light-holder .light {
+  background: rgb(255, 255, 255); 
+  background: linear-gradient(
+    180deg,
+    rgba(101, 101, 121, 1) 0%,
+    rgba(255, 255, 255, 0) 75%,
+    rgba(255, 255, 255, 0) 100%
+  ) !important;
+  height: 100px;
+  width: 300px;
+}
+
+.active-link .button-holder {
+  color: rgba(101, 101, 121, 1) !important;
+}
+
+.active-link:hover .light-holder .light {
+  background: linear-gradient(
+    180deg,
+    rgba(101, 101, 121, 1) 0%,
+    rgba(255, 255, 255, 0) 75%,
+    rgba(255, 255, 255, 0) 100%
+  );
+}

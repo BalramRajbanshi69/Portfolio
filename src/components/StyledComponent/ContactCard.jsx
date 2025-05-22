@@ -1,28 +1,183 @@
 import React from 'react';
+import { useState } from 'react';
 import styled from 'styled-components';
+import toast from "react-hot-toast";
 
 
 const ContactCard = () => {
+  const apiUrl = import.meta.env.VITE_REACT_API_URL;
+    const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    subject: "",
+    message: ""
+  });
+  const [errors, setErrors] = useState({});
+  const [loading, setLoading] = useState(false);
+
+     // Add validation function
+  const validateForm = () => {
+    const newErrors = {};
+    if (!formData.name.trim()) {
+      newErrors.name = "Name is required";
+    }
+    if (!formData.email) {
+      newErrors.email = "Email is required";
+    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
+      newErrors.email = "Email is invalid";
+    }
+    if (!formData.subject.trim()) {
+      newErrors.subject = "Subject is required";
+    }
+    if (!formData.message.trim()) {
+      newErrors.message = "Message is required";
+    } else if (formData.message.length < 10) {
+      newErrors.message = "Message must be at least 10 characters";
+    }
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
+     // Add handleChange function
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+    // Clear error when user types
+    if (errors[name]) {
+      setErrors(prev => ({
+        ...prev,
+        [name]: ""
+      }));
+    }
+  };
+
+   // Add handleSubmit function
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (validateForm()) {
+      setLoading(true);
+      try {
+        const response = await fetch(`${apiUrl}/api/contact`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(formData)
+        });
+         const data = await response.json();
+
+        if (response.ok) {
+            toast.success("Message sent successfully!");
+          setFormData({
+            name: "",
+            email: "",
+            subject: "",
+            message: ""
+          });
+        } else {
+          toast.error(data.message || "Failed to send message");
+        }
+      } catch (error) {
+        console.error("Error:", error);
+        toast.error("An unexpected error occurred");
+      } finally {
+        setLoading(false);
+      }
+    } else {
+      toast.error("Please fix the errors in the form");
+    }
+  };
+
   return (
+    // <StyledWrapper>
+    //   <div className="form-card1">
+    //     <div className="form-card2 ">
+    //       <form onSubmit={handleSubmit} className="form">
+    //         <p className="form-heading">Get In Touch</p>
+    //         <div className="form-field">
+    //           <input required placeholder="Name" className="input-field" type="text" />
+    //         </div>
+    //         <div className="form-field">
+    //           <input required placeholder="Email" className="input-field" type="email" />
+    //         </div>
+    //         <div className="form-field">
+    //           <input required placeholder="Subject" className="input-field" type="text" />
+    //         </div>
+    //         <div className="form-field">
+    //           <textarea required placeholder="Message" cols={30} rows={3} className="input-field" defaultValue={""} />
+    //         </div>
+    //         <button className="sendMessage-btn" type='submit'>Send Message</button>
+            
+    //       </form>
+    //     </div>
+    //   </div>
+    // </StyledWrapper>
+
     <StyledWrapper>
       <div className="form-card1">
-        <div className="form-card2 ">
-          <form className="form">
+        <div className="form-card2">
+          <form onSubmit={handleSubmit} className="form">
             <p className="form-heading">Get In Touch</p>
             <div className="form-field">
-              <input required placeholder="Name" className="input-field" type="text" />
+              <input 
+                required 
+                placeholder="Name" 
+                className="input-field" 
+                type="text"
+                name="name"
+                value={formData.name}
+                onChange={handleChange}
+              />
+              {errors.name && <span className="error">{errors.name}</span>}
             </div>
             <div className="form-field">
-              <input required placeholder="Email" className="input-field" type="email" />
+              <input 
+                required 
+                placeholder="Email" 
+                className="input-field" 
+                type="email"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+              />
+              {errors.email && <span className="error">{errors.email}</span>}
             </div>
             <div className="form-field">
-              <input required placeholder="Subject" className="input-field" type="text" />
+              <input 
+                required 
+                placeholder="Subject" 
+                className="input-field" 
+                type="text"
+                name="subject"
+                value={formData.subject}
+                onChange={handleChange}
+              />
+              {errors.subject && <span className="error">{errors.subject}</span>}
             </div>
             <div className="form-field">
-              <textarea required placeholder="Message" cols={30} rows={3} className="input-field" defaultValue={""} />
+              <textarea 
+                required 
+                placeholder="Message" 
+                cols={30} 
+                rows={3} 
+                className="input-field"
+                name="message"
+                value={formData.message}
+                onChange={handleChange}
+              />
+              {errors.message && <span className="error">{errors.message}</span>}
             </div>
-            <button className="sendMessage-btn">Send Message</button>
-            
+            <button 
+              className="sendMessage-btn" 
+              type='submit'
+              disabled={loading}
+            >
+              {loading ? 'Sending...' : 'Send Message'}
+            </button>
           </form>
         </div>
       </div>
@@ -113,6 +268,19 @@ const StyledWrapper = styled.div`
     color: #000;
     cursor: pointer;
     box-shadow: inset 2px 5px 10px rgb(5, 5, 5);
+  }
+
+   .error {
+    color: #ff6b6b;
+    font-size: 0.8em;
+    margin-top: 0.2em;
+    text-align: left;
+    width: 100%;
+  }
+
+  .sendMessage-btn:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
   }
 
   .form-card1 {

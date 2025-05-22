@@ -32,6 +32,7 @@ const Footer = () => {
                   <div className='text-gray-400 text-md'>
                         Made with ❤️ by Balram
                     </div>
+                    
             </div>
           </div>
         </div>

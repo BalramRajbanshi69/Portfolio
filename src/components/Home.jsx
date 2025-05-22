@@ -8,13 +8,16 @@ import Contact from './Contact';
 import Footer from './Footer';
 
 
+
+
 const Home = () => {
   return (
     <div>
     <div className='min-h-screen bg-black'>
+
       {/* Main Home */}
       <MainHome/>
-
+      
       {/* skills */}
       <Skills/>
 
@@ -30,6 +33,7 @@ const Home = () => {
 
     {/* Footer */}
     <Footer/>
+
     </div>
 
   )

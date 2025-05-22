@@ -1,5 +1,4 @@
 
-
 import React, { useState } from 'react';
 import { FaHome, FaGraduationCap, FaCode, FaStar, FaEnvelope } from "react-icons/fa";
 import "./NavbarTool.css";

@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import Profile from "../../../src/assets/profileImage.jpg";
+import Profile from "../../assets/tech/profilepic.png";
 
 
 const ProfileCard = () => {

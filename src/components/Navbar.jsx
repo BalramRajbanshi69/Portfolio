@@ -23,19 +23,8 @@ export default function Navbar() {
   const [nav, setNav] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const handleClick = () => setNav(!nav);
-  const location = useLocation();
   const [activeLink, setActiveLink] = useState("");
 
-  useEffect(() => {
-    const path = location.pathname;
-    navigation.forEach((item) => {
-      if (item.href.startsWith("#") ? item.href === path + item.href : item.href === path) {
-        setActiveLink(item.name);
-      } else if (path === "/" && item.name === "Home") {
-        setActiveLink(item.name);
-      }
-    });
-  }, [location]);
 
   useEffect(()=>{
     const handleScroll =()=>{

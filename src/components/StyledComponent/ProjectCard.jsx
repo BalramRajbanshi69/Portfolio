@@ -1,8 +1,11 @@
 import React from "react";
 
-import Project3 from "../../assets/projects/hospital1.jpg";
-import Project2 from "../../assets/projects/hospital2.jpg";
-import Project1 from "../../assets/projects/student1.jpg";
+import Project1 from "../../assets/projects/students1.svg";
+import Project2 from "../../assets/projects/Hospital.svg";
+import Project3 from "../../assets/projects/ecommerce.svg";
+import Project4 from "../../assets/projects/ecommerce-simple.svg";
+import Project5 from "../../assets/projects/todo.svg";
+import Project6 from "../../assets/projects/students1.svg";
 
 import { SiGithub } from "react-icons/si";
 import { FaExternalLinkAlt } from "react-icons/fa";
@@ -27,33 +30,33 @@ const projects = [
   {
     id: 3,
     image: Project3,
-    title: "Doctor Appointment System",
-    github: "https://github.com/yourusername/project1",
-    live: "https://project1-demo.com"
+    title: "Ecommerce-Ecofriend-MERN",
+    github: "https://github.com/BalramRajbanshi69/EcoMERN_Frontend",
+    live: "https://ecofriend-mern.vercel.app/"
   },
 
 
     {
     id: 4,
-    image: Project1,
-    title: "Student Management System",
-    github: "https://github.com/BalramRajbanshi69/Student_Management_System_MERN_Client",
-    live: "https://sms-mern.vercel.app/"
+    image: Project4,
+    title: "Mern Simple Ecommerce",
+    github: "https://github.com/BalramRajbanshi69/mern_practice_ecom_client",
+    live: "https://mern-simple-ecom.vercel.app/"
   },
   {
     id: 5,
-    image: Project2,
-    title: "Doctor Appointment System",
+    image: Project5,
+    title: "Todo App",
     github: "https://github.com/BalramRajbanshi69/Hospital_Management_System_MERN",
     live: "https://hosms-mern.vercel.app/"
     
   },
   {
     id: 6,
-    image: Project3,
-    title: "Doctor Appointment System",
-    github: "https://github.com/yourusername/project1",
-    live: "https://project1-demo.com"
+    image: Project6,
+    title: "Ecommerce-Ecofriend-MERN",
+    github: "https://github.com/BalramRajbanshi69/EcoMERN_Frontend",
+    live: "https://ecofriend-mern.vercel.app/"
   },
 ];
 
@@ -74,7 +77,7 @@ const ProjectCard = () => {
           <img 
             src={project.image}
             alt={project.title}
-            className="absolute inset-0 w-full h-full object-cover object-center 
+            className="absolute inset-0 w-full h-full object-contain object-center 
               transition-all duration-500 group-hover:scale-110 z-0"
           />
 

@@ -6,6 +6,7 @@ import Skills from './Skills';
 import MainHome from './MainHome';
 import Contact from './Contact';
 import Footer from './Footer';
+import TechStack from './StyledComponent/TechStack';
 
 
 
@@ -17,6 +18,7 @@ const Home = () => {
 
       {/* Main Home */}
       <MainHome/>
+
       
       {/* skills */}
       <Skills/>

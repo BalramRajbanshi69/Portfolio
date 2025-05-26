@@ -1,82 +1,97 @@
-import React from 'react';
-import { useState } from 'react';
-import styled from 'styled-components';
+import React from "react";
+import { useState } from "react";
+import styled from "styled-components";
 import toast from "react-hot-toast";
-
 
 const ContactCard = () => {
   const apiUrl = import.meta.env.VITE_REACT_API_URL;
-    const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState({
     name: "",
     email: "",
     subject: "",
-    message: ""
+    message: "",
   });
   const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(false);
 
-     // Add validation function
+  // Enhanced validation function
   const validateForm = () => {
     const newErrors = {};
+
+    // Name validation
     if (!formData.name.trim()) {
       newErrors.name = "Name is required";
+    } else if (formData.name.trim().length < 3) {
+      newErrors.name = "Name must be at least 3 characters long";
     }
+
+    // Email validation
     if (!formData.email) {
       newErrors.email = "Email is required";
-    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-      newErrors.email = "Email is invalid";
+    } else if (
+      !/^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.(com)$/.test(formData.email)
+    ) {
+      newErrors.email = "Please enter a valid email address with .com domain";
     }
+
+    // Subject validation
     if (!formData.subject.trim()) {
       newErrors.subject = "Subject is required";
+    } else if (formData.subject.trim().length < 3) {
+      newErrors.subject = "Subject must be at least 3 characters long";
     }
+
+    // Message validation
     if (!formData.message.trim()) {
       newErrors.message = "Message is required";
-    } else if (formData.message.length < 10) {
-      newErrors.message = "Message must be at least 10 characters";
+    } else if (formData.message.trim().length < 10) {
+      newErrors.message = "Message must be at least 10 characters long";
     }
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
 
-     // Add handleChange function
+  // Handle input changes
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
-      [name]: value
+      [name]: value,
     }));
     // Clear error when user types
     if (errors[name]) {
-      setErrors(prev => ({
+      setErrors((prev) => ({
         ...prev,
-        [name]: ""
+        [name]: "",
       }));
     }
   };
 
-   // Add handleSubmit function
+  // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     if (validateForm()) {
       setLoading(true);
       try {
         const response = await fetch(`${apiUrl}/api/contact`, {
           method: "POST",
           headers: {
-            "Content-Type": "application/json"
+            "Content-Type": "application/json",
           },
-          body: JSON.stringify(formData)
+          body: JSON.stringify(formData),
         });
-         const data = await response.json();
+
+        const data = await response.json();
 
         if (response.ok) {
-            toast.success("Message sent successfully!");
+          toast.success("Message sent successfully!");
           setFormData({
             name: "",
             email: "",
             subject: "",
-            message: ""
+            message: "",
           });
         } else {
           toast.error(data.message || "Failed to send message");
@@ -93,74 +108,73 @@ const ContactCard = () => {
   };
 
   return (
-
     <StyledWrapper>
       <div className="form-card1">
         <div className="form-card2">
           <form onSubmit={handleSubmit} className="form">
             <p className="form-heading">Get In Touch</p>
             <div className="form-field">
-              <input 
-                required 
-                placeholder="Name" 
-                className="input-field" 
+              <input
+                required
+                placeholder="Name"
+                className="input-field"
                 type="text"
                 name="name"
                 value={formData.name}
                 onChange={handleChange}
               />
-              {errors.name && <span className="error">{errors.name}</span>}
             </div>
+            {errors.name && <span className="error">{errors.name}</span>}
             <div className="form-field">
-              <input 
-                required 
-                placeholder="Email" 
-                className="input-field" 
+              <input
+                required
+                placeholder="Email"
+                className="input-field"
                 type="email"
                 name="email"
                 value={formData.email}
                 onChange={handleChange}
               />
-              {errors.email && <span className="error">{errors.email}</span>}
             </div>
+            {errors.email && <span className="error">{errors.email}</span>}
             <div className="form-field">
-              <input 
-                required 
-                placeholder="Subject" 
-                className="input-field" 
+              <input
+                required
+                placeholder="Subject"
+                className="input-field"
                 type="text"
                 name="subject"
                 value={formData.subject}
                 onChange={handleChange}
               />
-              {errors.subject && <span className="error">{errors.subject}</span>}
             </div>
+            {errors.subject && <span className="error">{errors.subject}</span>}
             <div className="form-field">
-              <textarea 
-                required 
-                placeholder="Message" 
-                cols={30} 
-                rows={3} 
+              <textarea
+                required
+                placeholder="Message"
+                cols={30}
+                rows={3}
                 className="input-field"
                 name="message"
                 value={formData.message}
                 onChange={handleChange}
               />
-              {errors.message && <span className="error">{errors.message}</span>}
             </div>
-            <button 
-              className="sendMessage-btn" 
-              type='submit'
+            {errors.message && <span className="error">{errors.message}</span>}
+            <button
+              className="sendMessage-btn"
+              type="submit"
               disabled={loading}
             >
-              {loading ? 'Sending...' : 'Send Message'}
+              {loading ? "Sending..." : "Send Message"}
             </button>
           </form>
         </div>
       </div>
     </StyledWrapper>
   );
-}
+};
 
 const StyledWrapper = styled.div`
   .form {
@@ -183,7 +197,7 @@ const StyledWrapper = styled.div`
     font-size: 1.2em;
     background-color: transparent;
     align-self: center;
-    font-family:"Yeseva One", sans-serif;
+    font-family: "Yeseva One", sans-serif;
   }
 
   .form-field {
@@ -207,22 +221,18 @@ const StyledWrapper = styled.div`
     width: 100%;
     color: #ccd6f6;
     padding-inline: 1em;
-    font-family: "Yeseva One", sans-serif;  // Add this line
-    font-size: 1em;  // Optional: adjust font size for better readability
+    font-family: "Yeseva One", sans-serif; // Add this line
+    font-size: 1em; // Optional: adjust font size for better readability
     letter-spacing: 0.05em;
-    
-    
   }
 
   .input-field::placeholder {
     color: #64ffda;
     letter-spacing: 0.05em;
-    }
+  }
   .input-field:focus::placeholder {
     color: white;
-}
-    
-
+  }
 
   .sendMessage-btn {
     cursor: pointer;
@@ -232,7 +242,7 @@ const StyledWrapper = styled.div`
     border: none;
     outline: none;
     background-color: transparent;
-    
+
     color: #64ffda;
     font-weight: bold;
     outline: 1px solid #64ffda;
@@ -247,7 +257,7 @@ const StyledWrapper = styled.div`
     box-shadow: inset 2px 5px 10px rgb(5, 5, 5);
   }
 
-   .error {
+  .error {
     color: #ff6b6b;
     font-size: 0.8em;
     margin-top: 0.2em;
@@ -278,6 +288,7 @@ const StyledWrapper = styled.div`
   .form-card2:hover {
     transform: scale(0.98);
     border-radius: 20px;
-  }`;
+  }
+`;
 
 export default ContactCard;

@@ -5,7 +5,7 @@ import Project2 from "../../assets/projects/Hospital.svg";
 import Project3 from "../../assets/projects/ecommerce.svg";
 import Project4 from "../../assets/projects/ecommerce-simple.svg";
 import Project5 from "../../assets/projects/todo.svg";
-import Project6 from "../../assets/projects/students1.svg";
+import Project6 from "../../assets/projects/Authentication.svg";
 
 import { SiGithub } from "react-icons/si";
 import { FaExternalLinkAlt } from "react-icons/fa";
@@ -47,16 +47,16 @@ const projects = [
     id: 5,
     image: Project5,
     title: "Todo App",
-    github: "https://github.com/BalramRajbanshi69/Hospital_Management_System_MERN",
-    live: "https://hosms-mern.vercel.app/"
+    github: "https://github.com/BalramRajbanshi69/Todo_client",
+    live: "https://todo-task-app-indol.vercel.app/"
     
   },
   {
     id: 6,
     image: Project6,
-    title: "Ecommerce-Ecofriend-MERN",
-    github: "https://github.com/BalramRajbanshi69/EcoMERN_Frontend",
-    live: "https://ecofriend-mern.vercel.app/"
+    title: "Authentication Register Login",
+    github: "https://github.com/BalramRajbanshi69/Authenticate_client",
+    live: "https://authentication-ten-cyan.vercel.app/"
   },
 ];
 

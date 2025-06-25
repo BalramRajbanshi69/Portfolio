@@ -13,6 +13,8 @@ const ContactCard = () => {
   });
   const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(false);
+  
+  
 
   // Enhanced validation function
   const validateForm = () => {

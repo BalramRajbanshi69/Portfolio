@@ -38,7 +38,7 @@ const TechStack = () => {
       { name: 'Express', img: Express, color: '#000000' },
       { name: 'MongoDB', img: MongoDB, color: '#47A248' },
       { name: 'Mongoose', img: Mongoose, color: '#880000' },
-      { name: 'REST API', img: RestAPI, color: '#FF5733' }
+      { name: 'RESTful API', img: RestAPI, color: '#FF5733' }
     ],
     tools: [
       { name: 'VS Code', img: VSCode, color: '#007ACC' },

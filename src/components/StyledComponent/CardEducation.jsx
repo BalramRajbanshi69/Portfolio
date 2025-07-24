@@ -15,7 +15,7 @@ const educationLogos = {
 const educationData = {
   graduation: {
     id: 1,
-    level: "Bachelor's Degree, TU",
+    level: "Tribhuvan University , Bachelor's Degree",
     faculty: "Faculty of Science & Technology",
     program: "B.Sc. in Computer Science and Information Technology",
     college: "Mahendra Morang Adarsha Multiple Campus ",
@@ -31,7 +31,7 @@ const educationData = {
   },
   highSchool: {
     id: 2,
-    level: "Higher Secondary Education Board (HSEB)",
+    level: "Nepal Examination Board(NEB)",
     faculty: "Science Stream",
     program: "10+2 Science",
     college: "Araniko Awasiya Secondary School",
@@ -42,7 +42,7 @@ const educationData = {
   },
   school: {
     id: 3,
-    level: "Nepal Examination Board (NEB)",
+    level: "School Leaving Certificate (SLC)",
     faculty: "General Education",
     program: "School Leaving Certificate",
     college: "Miniland English Boarding School",

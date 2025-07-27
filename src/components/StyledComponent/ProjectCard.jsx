@@ -50,8 +50,8 @@ const projects = [
     id: 5,
     image: Project5,
     title: "Ecommerce-Ecofriend-MERN",
-    github: "https://github.com/BalramRajbanshi69/EcoMERN_Frontend",
-    live: "https://ecofriend-mern.vercel.app/"
+    github: "https://github.com/BalramRajbanshi69/Ecommerce_MERN_Frontend",
+    live: "https://ecommerce-mern-theta-kohl.vercel.app/"
   },
  
   {

@@ -32,7 +32,7 @@ const MainHome = () => {
                   sequence={[
                     'MERN Stack Developer',
                     1000,
-                    'React Developer',
+                    'Frontend Developer',
                     1000,
                     'Backend Developer',
                     1000,

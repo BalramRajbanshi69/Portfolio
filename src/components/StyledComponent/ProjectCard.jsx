@@ -3,9 +3,9 @@ import React, { useState } from "react";
 
 import Project1 from "../../assets/projects/food.svg";
 import Project2 from "../../assets/projects/admin.svg";
-import Project3 from "../../assets/projects/students1.svg";
+import Project3 from "../../assets/projects/ecommerce.svg";
 import Project4 from "../../assets/projects/Hospital.svg";
-import Project5 from "../../assets/projects/ecommerce.svg";
+import Project5 from "../../assets/projects/students1.svg";
 import Project6 from "../../assets/projects/Authentication.svg";
 import Project7 from "../../assets/projects/todo.svg";
 import Project8 from "../../assets/projects/ecommerce-simple.svg";
@@ -35,10 +35,11 @@ const projects = [
   {
     id: 3,
     image: Project3,
-    title: "Student Management System",
-    github: "https://github.com/BalramRajbanshi69/Student_Management_System_MERN_Client",
-    live: "https://sms-mern.vercel.app/"
+    title: "Ecommerce-Ecofriend-MERN",
+    github: "https://github.com/BalramRajbanshi69/Ecommerce_MERN_Frontend",
+    live: "https://ecommerce-mern-theta-kohl.vercel.app/"
   },
+  
   {
     id: 4,
     image: Project4,
@@ -49,9 +50,9 @@ const projects = [
   {
     id: 5,
     image: Project5,
-    title: "Ecommerce-Ecofriend-MERN",
-    github: "https://github.com/BalramRajbanshi69/Ecommerce_MERN_Frontend",
-    live: "https://ecommerce-mern-theta-kohl.vercel.app/"
+    title: "Student Management System",
+    github: "https://github.com/BalramRajbanshi69/Student_Management_System_MERN_Client",
+    live: "https://sms-mern.vercel.app/"
   },
  
   {

@@ -30,11 +30,9 @@ const ContactCard = () => {
     // Email validation
     if (!formData.email) {
       newErrors.email = "Email is required";
-    } else if (
-      !/^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.(com)$/.test(formData.email)
-    ) {
-      newErrors.email = "Please enter a valid email address with .com domain";
-    }
+    } else if (!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(formData.email)) {
+  newErrors.email = "Please enter a valid email address";
+}
 
     // Subject validation
     if (!formData.subject.trim()) {
@@ -71,43 +69,92 @@ const ContactCard = () => {
   };
 
   // Handle form submission
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+
+  //   if (validateForm()) {
+  //     setLoading(true);
+  //     try {
+  //       const response = await fetch(`${apiUrl}/api/contact`, {
+  //         method: "POST",
+  //         headers: {
+  //           "Content-Type": "application/json",
+  //         },
+  //         body: JSON.stringify(formData),
+  //       });
+
+  //       const data = await response.json();
+
+  //       if (response.ok) {
+  //         toast.success("Message sent successfully!");
+  //         setFormData({
+  //           name: "",
+  //           email: "",
+  //           subject: "",
+  //           message: "",
+  //         });
+  //       } else {
+  //         toast.error(data.message || "Failed to send message");
+  //       }
+  //     } catch (error) {
+  //       console.error("Error:", error);
+  //       toast.error("An unexpected error occurred");
+  //     } finally {
+  //       setLoading(false);
+  //     }
+  //   } else {
+  //     toast.error("Please fix the errors in the form");
+  //   }
+  // };
+
+
   const handleSubmit = async (e) => {
-    e.preventDefault();
+  e.preventDefault();
 
-    if (validateForm()) {
-      setLoading(true);
-      try {
-        const response = await fetch(`${apiUrl}/api/contact`, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(formData),
+  if (validateForm()) {
+    setLoading(true);
+    try {
+      const response = await fetch(`${apiUrl}/api/contact`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        toast.success("Message sent successfully!");
+        setFormData({
+          name: "",
+          email: "",
+          subject: "",
+          message: "",
         });
-
-        const data = await response.json();
-
-        if (response.ok) {
-          toast.success("Message sent successfully!");
-          setFormData({
-            name: "",
-            email: "",
-            subject: "",
-            message: "",
+        setErrors({}); // Clear any existing errors
+      } else {
+        if (data.errors) {
+          const backendErrors = {};
+          data.errors.forEach((err) => {
+            backendErrors[err.param] = err.msg;
           });
+          setErrors(backendErrors);
+          toast.error("Please fix the errors in the form");
         } else {
           toast.error(data.message || "Failed to send message");
         }
-      } catch (error) {
-        console.error("Error:", error);
-        toast.error("An unexpected error occurred");
-      } finally {
-        setLoading(false);
       }
-    } else {
-      toast.error("Please fix the errors in the form");
+    } catch (error) {
+      console.error("Error:", error);
+      toast.error("An unexpected error occurred");
+    } finally {
+      setLoading(false);
     }
-  };
+  } else {
+    toast.error("Please fix the errors in the form");
+  }
+};
 
   return (
     <StyledWrapper>

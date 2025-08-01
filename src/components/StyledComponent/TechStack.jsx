@@ -7,6 +7,7 @@ import JavaScript from '../../assets/tech/js.png';
 import ReactLogo from '../../assets/tech/reactjs.png';
 import Tailwind from '../../assets/tech/tailwind.png';
 import Bootstrap from '../../assets/tech/bootstrap.png';
+import ReduxToolkit from "../../assets/tech/redux.png"
 // Backend imports
 import Node from '../../assets/tech/nodejs.png';
 import Express from '../../assets/tech/expressjs.png';
@@ -22,6 +23,7 @@ import Thunder from '../../assets/tech/thunderclient.jpeg';
 import NPM from '../../assets/tech/npm.png';
 import Nodemon from '../../assets/tech/nodemon.png';
 import Vercel from '../../assets/tech/vercel.png';
+import Cloudinary from "../../assets/tech/Cloudinary1.png"
 
 const TechStack = () => {
   const techStacks = {
@@ -31,7 +33,8 @@ const TechStack = () => {
       { name: 'JavaScript', img: JavaScript, color: '#F7DF1E' },
       { name: 'React', img: ReactLogo, color: '#61DAFB' },
       { name: 'Tailwind', img: Tailwind, color: '#06B6D4' },
-      { name: 'Bootstrap', img: Bootstrap, color: '#7952B3' }
+      { name: 'Bootstrap', img: Bootstrap, color: '#7952B3' },
+      { name: 'ReduxToolkit', img: ReduxToolkit, color: '#6222a6ff' }
     ],
     backend: [
       { name: 'Node.js', img: Node, color: '#339933' },
@@ -42,34 +45,42 @@ const TechStack = () => {
     ],
     tools: [
       { name: 'VS Code', img: VSCode, color: '#007ACC' },
-      { name: 'Git', img: Git, color: '#F05032' },
+      { name: 'Git', img: Git, color: '#E44D26' },
       { name: 'GitHub', img: GitHub, color: '#181717' },
       { name: 'Postman', img: Postman, color: '#FF6C37' },
       { name: 'Thunder Client', img: Thunder, color: '#634D90' },
       { name: 'npm', img: NPM, color: '#CB3837' },
       { name: 'Nodemon', img: Nodemon, color: '#76D04B' },
-      { name: 'Vercel', img: Vercel, color: '#000000' }
+      { name: 'Vercel', img: Vercel, color: '#000000' },
+      { name: 'Cloudinary', img: Cloudinary, color: '#421197ff' }
     ]
   };
 
   return (
 
-     <StyledWrapper>
+    <StyledWrapper>
       <div className="container">
         {Object.entries(techStacks).map(([category, techs]) => (
           <div key={category} className="stack-box">
             <h3 className="category-title">{category.toUpperCase()}</h3>
             <div className="tech-grid">
               {techs.map((tech, index) => (
-                <div 
-                  className="tech-card" 
+                <div
+                  className="tech-card"
                   key={index}
-                  style={{"--hover-color": tech.color}}
+                  style={{
+                    "--hover-color": tech.color,
+                    "--card-hover-bg": tech.color,
+                  }}
                 >
-                  <img 
-                    src={tech.img} 
-                    alt={tech.name} 
+                  <img
+                    src={tech.img}
+                    alt={tech.name}
                     className="tech-logo"
+                    style={{
+                      filter: "brightness(0.7)",
+                      transition: "all 0.3s ease",
+                    }}
                   />
                   <span className="tech-name">{tech.name}</span>
                 </div>
@@ -258,7 +269,7 @@ const StyledWrapper = styled.div`
       transform: translateY(-10px);
       box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
       cursor: pointer;
-      
+
       .tech-grid {
         opacity: 1;
         transform: scale(1);
@@ -266,7 +277,7 @@ const StyledWrapper = styled.div`
     }
   }
 
-   .category-title {
+  .category-title {
     color: #fff;
     font-size: 1.75rem;
     font-weight: bold;
@@ -295,11 +306,15 @@ const StyledWrapper = styled.div`
     border-radius: 12px;
     transition: all 0.3s ease;
 
-      &:hover {
+    &:hover {
       transform: translateY(-5px);
-      background-color: var(--hover-color);
+      background-color: var(--card-hover-bg, var(--hover-color));
       box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
       cursor: pointer;
+
+      .tech-logo {
+        filter: brightness(1);
+      }
     }
   }
 
@@ -307,6 +322,8 @@ const StyledWrapper = styled.div`
     width: 40px;
     height: 40px;
     object-fit: contain;
+    filter: brightness(0.7);
+    transition: all 0.3s ease;
   }
 
   .tech-name {
@@ -316,20 +333,42 @@ const StyledWrapper = styled.div`
     opacity: 0.9;
   }
 
-  // Theme colors for categories
+  /* Define background colors for each tech card */
+  .tech-card:nth-child(1) {
+    --card-hover-bg: #e44d26;
+  }
+  .tech-card:nth-child(2) {
+    --card-hover-bg: #264de4;
+  }
+  .tech-card:nth-child(3) {
+    --card-hover-bg: #f7df1e;
+  }
+  .tech-card:nth-child(4) {
+    --card-hover-bg: #61dafb;
+  }
+  .tech-card:nth-child(5) {
+    --card-hover-bg: #06b6d4;
+  }
+  .tech-card:nth-child(6) {
+    --card-hover-bg: #7952b3;
+  }
+  .tech-card:nth-child(7) {
+    --card-hover-bg: #6222a6ff;
+  }
+
+  /* Theme colors for categories */
   .stack-box:nth-child(1) {
-    --hover-color: #61DAFB;
+    --hover-color: #61dafb;
   }
 
   .stack-box:nth-child(2) {
     --hover-color: #339933;
   }
 
-   .stack-box:nth-child(3) {
-    --hover-color: #F05032;
+  .stack-box:nth-child(3) {
+    --hover-color: #f05032;
   }
 `;
-
 
 
 

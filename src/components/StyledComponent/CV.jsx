@@ -5,7 +5,7 @@ const CV = () => {
   return (
     <StyledWrapper>
     <div className='w-[155px]'>
-      <a href='/Balram_CV.pdf' className="ui-btn" target="_blank"
+      <a href='/BalramCVFullStack.pdf' className="ui-btn" target="_blank"
           rel="noopener noreferrer">
         <span>
           Download CV 

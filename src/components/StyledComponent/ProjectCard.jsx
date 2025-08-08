@@ -5,10 +5,12 @@ import Project1 from "../../assets/projects/food.svg";
 import Project2 from "../../assets/projects/admin.svg";
 import Project3 from "../../assets/projects/ecommerce.svg";
 import Project4 from "../../assets/projects/Hospital.svg";
-import Project5 from "../../assets/projects/students1.svg";
-import Project6 from "../../assets/projects/Authentication.svg";
-import Project7 from "../../assets/projects/todo.svg";
-import Project8 from "../../assets/projects/ecommerce-simple.svg";
+import Project5 from "../../assets/projects/book_store.svg";
+import Project6 from "../../assets/projects/book_store_admin.svg";
+import Project7 from "../../assets/projects/students1.svg";
+import Project8 from "../../assets/projects/Authentication.svg";
+import Project9 from "../../assets/projects/todo.svg";
+import Project10 from "../../assets/projects/ecommerce-simple.svg";
 
 
 
@@ -50,32 +52,47 @@ const projects = [
   {
     id: 5,
     image: Project5,
+    title: "Book Store System",
+    github: "https://github.com/BalramRajbanshi69/BookStore_System",
+    live: "https://book-store-system-virid.vercel.app/"
+  },
+   {
+    id: 6,
+    image: Project6,
+    title: "Admin Book Store",
+    github: "https://github.com/BalramRajbanshi69/BookStore_Admin",
+    live: "https://book-store-admin-lovat.vercel.app/"
+  },
+  {
+    id: 7,
+    image: Project7,
     title: "Student Management System",
     github: "https://github.com/BalramRajbanshi69/Student_Management_System_MERN_Client",
     live: "https://sms-mern.vercel.app/"
   },
  
   {
-    id: 6,
-    image: Project6,
+    id: 8,
+    image: Project8,
     title: "Authentication Register Login",
     github: "https://github.com/BalramRajbanshi69/Authenticate_client",
     live: "https://authentication-ten-cyan.vercel.app/"
   },
   {
-    id: 7,
-    image: Project7,
+    id: 9,
+    image: Project9,
     title: "Todo App",
     github: "https://github.com/BalramRajbanshi69/Todo_client",
     live: "https://todo-task-app-indol.vercel.app/"
   },
   {
-    id: 8,
-    image: Project8,
+    id: 10,
+    image: Project10,
     title: "Mern Simple Ecommerce",
     github: "https://github.com/BalramRajbanshi69/mern_practice_ecom_client",
     live: "https://mern-simple-ecom.vercel.app/"
   },
+ 
 ];
 
 const ProjectCard = () => {
